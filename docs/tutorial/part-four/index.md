@@ -1,92 +1,61 @@
----
-title: Gatsby.js Tutorial Part Four
-typora-copy-images-to: ./
----
+# Gatsby.js Tutorial Part Four
+
 
 Welcome to Part Four of the tutorial! Halfway through! Hope things are starting
 to feel pretty comfortable 😀
 
-But don't get too comfortable 😉. In this tutorial, we're headed to new
-territory which will require some brain stretching to fully understand. In the
-next two parts of the tutorial, we'll be diving into the Gatsby data layer, which is a
-powerful feature of Gatsby that lets you easily build sites from Markdown,
-WordPress, headless CMSs, and other data sources of all flavors.
+But don't get too comfortable 😉. In this tutorial, we're headed to new territory which will require some brain stretching to fully understand. In the next two parts of the tutorial, we'll be diving into the Gatsby data layer, which is a powerful feature of Gatsby that lets you easily build sites from Markdown, WordPress, headless CMSs, and other data sources of all flavors.
 
-**NOTE:** Gatsby’s data layer is powered by GraphQL. If you’re new to GraphQL,
-this section may feel a little overwhelming. For an in-depth tutorial on
-GraphQL, we recommend [How to GraphQL](https://www.howtographql.com/).
+**NOTE:** Gatsby’s data layer is powered by GraphQL. If you’re new to GraphQL, this section may feel a little overwhelming. For an in-depth tutorial on GraphQL, we recommend [How to GraphQL](https://www.howtographql.com/).
 
 ## Recap of first half of the tutorial
 
-So far, we've been learning how to use React.js—how powerful it is to be able to
-create our _own_ components to act as custom building blocks for websites.
+So far, we've been learning how to use React.js—how powerful it is to be able to create our _own_ components to act as custom building blocks for websites.
 
-We’ve also explored styling components using CSS Modules and CSS-in-JS, which
-lets us encapsulate CSS within our components.
+We’ve also explored styling components using CSS Modules and CSS-in-JS, which lets us encapsulate CSS within our components.
 
 ## Data in Gatsby
 
-A website has four parts, HTML, CSS, JS, and data. The first half of the
-tutorial focused on the first three. Let's learn now how to use data in Gatsby
-sites.
+A website has four parts, HTML, CSS, JS, and data. The first half of the tutorial focused on the first three. Let's learn now how to use data in Gatsby sites.
 
 What is data?
 
-A very computer science-y answer would be: data is things like `"strings"`,
-integers (`42`), objects (`{ pizza: true }`), etc.
+A very computer science-y answer would be: data is things like `"strings"`, integers (`42`), objects (`{ pizza: true }`), etc.
 
-For the purpose of working in Gatsby, however, a more useful answer is
-"everything that lives outside a React component".
+For the purpose of working in Gatsby, however, a more useful answer is: "everything that lives outside a React component".
 
-So far, we've been writing text and adding images _directly_ in components.
-Which is an _excellent_ way to build many websites. But, often you want to store
-data _outside_ components and then bring the data _into_ the component as
-needed.
+So far, we've been writing text and adding images _directly_ in components. Which is an _excellent_ way to build many websites. But, often you want to store data _outside_ components and then bring the data _into_ the component as needed.
 
 For example, if you're building a site with WordPress (so other contributors
-have a nice interface for adding & maintaining content) and Gatsby, the _data_
-for the site (pages and posts) are in WordPress and you _pull_ that data, as
-needed, into your components.
+have a nice interface for adding & maintaining content) and Gatsby (as the front-end), the _data_
+for the site (pages and posts) are in WordPress and you _pull_ that data, as needed, into your components.
 
-Data can also live in file types like Markdown, CSV, etc. as well as databases
-and APIs of all sorts.
+Data can also live in file types like Markdown, CSV, etc. as well as databases and APIs of all sorts.
 
-**Gatsby's data layer lets us pull data from these (and any other source)
-directly into our components**—in the shape and form we want.
+**Gatsby's data layer lets us pull data from these (and any other source) directly into our components** - in the shape and form we want.
+
 
 ## How Gatsby's data layer uses GraphQL to pull data into components
 
-If you're familiar with the React world, there are many options for loading data
-into components. One of the most popular and robust of these is a technology
-called [GraphQL](http://graphql.org/).
+If you're familiar with the React world, there are many options for loading data into components. One of the most popular and robust of these is a technology called [GraphQL](http://graphql.org/).
 
-GraphQL was invented at Facebook to help product engineers pull needed data into
-components.
+GraphQL was invented at Facebook to help product engineers pull needed data into components.
 
-GraphQL is a **q**uery **l**anguage (the _QL_ part of its name). If you're
-familiar with SQL, it works in a very similar way. Using a special syntax, you describe
-the data you want in your component and then that data is given
-to you.
+GraphQL is a **q**uery **l**anguage (the _QL_ part of its name). If you're familiar with SQL, it works in a very similar way. Using a special syntax, you describe the data you want in your component and then that data is given to you.
 
 In Gatsby, GraphQL enables components to declare and receive the data they need.
 
 ## Our first GraphQL query
 
-Let's create another new site for this part of the tutorial like in the previous
-parts. We're going to build a Markdown blog called "Pandas Eating Lots".
-It's dedicated to showing off the best pictures & videos of Pandas eating lots
-of food. Along the way we'll be dipping our toes into GraphQL and Gatsby's
-Markdown support.
+Let's create another new site for this part of the tutorial like in the previous parts. We're going to build a Markdown blog called "Pandas Eating Lots". It's dedicated to showing off the best pictures & videos of Pandas eating lots of food. Along the way we'll be dipping our toes into GraphQL and Gatsby's Markdown support.
 
 Run this command in a new terminal window:
 
-```shell
+```bash
 gatsby new tutorial-part-four https://github.com/gatsbyjs/gatsby-starter-hello-world
 ```
 
-Then install some other needed dependencies at the root of the project. We'll use the Typography theme
-Kirkham + we'll try out a CSS-in-JS library
-[Glamorous](https://glamorous.rocks/):
+Then install some other needed dependencies at the root of the project. We'll use the Typography theme "Kirkham" and we'll try out a CSS-in-JS library [Glamorous](https://glamorous.rocks/):
 
 ```shell
 npm install --save gatsby-plugin-typography gatsby-plugin-glamor glamorous typography-theme-kirkham
@@ -201,22 +170,13 @@ We have another small site with a layout and two pages.
 
 Now let's start querying 😋
 
-When building sites, it's common to want to reuse common bits of data across the
-site. Like the _site title_ for example. Look at the `/about/` page. You'll
-notice that we have the site title in both the layout component (the site
-header) as well as in the title of the About page. But what if we want to change
-the site title at some point in the future? We'd have to search across all our
-components for spots using the site title and edit each instance of the title. This process is both cumbersome and
-error-prone, especially as sites get larger and more complex. It's much better to
-store the title in one place and then _pull_ that title into components whenever
-we need it.
+When building sites, it's common to want to reuse common bits of data across the site. Like the _site title_ for example. Look at the `/about/` page. You'll notice that we have the site title in both the layout component (the site header) as well as in the title of the About page. But what if we want to change the site title at some point in the future? We'd have to search across all our components for spots using the site title and edit each instance of the title. This process is both cumbersome and error-prone, especially as sites get larger and more complex. It's much better to store the title in one place and then _pull_ that title into components whenever we need it.
 
-To solve this, we can add site "metadata" — like page title or description — to the `gatsby-config.js` file. Let's add our site title to
-`gatsby-config.js` file and then query it from our layout and about page!
+To solve this, we can add site "metadata" — like page title or description — to the `gatsby-config.js` file. Let's add our site title to `gatsby-config.js` file and then query it from our layout and about page!
 
 Edit your `gatsby-config.js`:
 
-```javascript{2-4}
+```jsx
 module.exports = {
   siteMetadata: {
     title: `Blah Blah Fake Title`,
@@ -239,7 +199,7 @@ Then edit the two components:
 
 `src/pages/about.js`
 
-```jsx{3,5-7,14-23}
+```jsx
 import React from "react";
 
 export default ({ data }) =>
@@ -266,7 +226,7 @@ export const query = graphql`
 
 `src/layouts/index.js`
 
-```jsx{10,19,28-33}
+```jsx
 import React from "react";
 import g from "glamorous";
 import { css } from "glamor";
@@ -311,70 +271,42 @@ It worked!! 🎉
 
 But let's restore the real title.
 
-One of the core principles of Gatsby is creators need an immediate connection to
-what they're creating
-([hat tip to Bret Victor](http://blog.ezyang.com/2012/02/transcript-of-inventing-on-principleb/)).
-Or, in other words, when you make any change to code you should immediately see
-the effect of that change. You manipulate an input of Gatsby and you see the new
-output showing up on the screen.
+One of the core principles of Gatsby is creators need an immediate connection to what they're creating ([hat tip to Bret Victor](http://blog.ezyang.com/2012/02/transcript-of-inventing-on-principleb/)).  Or, in other words, when you make any change to code you should immediately see the effect of that change. You manipulate an input of Gatsby and you see the new output showing up on the screen.
 
 So almost everywhere, changes you make will immediately take effect.
 
-Try editing the title in `siteMetadata`—change the title back to "Pandas Eating
-Lots". The change should show up very quickly in your browser.
+Try editing the title in `siteMetadata`—change the title back to "Pandas Eating Lots". The change should show up very quickly in your browser.
 
 ## Wait — where did the graphql tag come from?
 
-You may have noticed that we used a
-[tag function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals)
-called `graphql`, but we never actually _import_ a `graphql` tag. So... how does
-this not throw an error?
+You may have noticed that we used a [tag function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) called `graphql`, but we never actually _import_ a `graphql` tag. So... how does this not throw an error?
 
-The short answer is this: during the Gatsby build process, GraphQL queries are
-pulled out of the original source for parsing.
+The short answer is this: during the Gatsby build process, GraphQL queries are pulled out of the original source for parsing.
 
-The longer answer is a little more involved: Gatsby borrows a technique from
-[Relay](https://facebook.github.io/relay/) that converts our source code into an
-[abstract syntax tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree)
-during the build step. All `graphql`-tagged templates are found in
-[`file-parser.js`](https://github.com/gatsbyjs/gatsby/blob/v1.6.3/packages/gatsby/src/internal-plugins/query-runner/file-parser.js#L63)
-and
-[`query-compiler.js`](https://github.com/gatsbyjs/gatsby/blob/v1.6.3/packages/gatsby/src/internal-plugins/query-runner/query-compiler.js),
-which effectively removes them from the original source code. This means that
-the `graphql` tag isn’t executed the way that we might expect, which is why
-there’s no error, despite the fact that we’re technically using an undefined tag
-in our source.
+The longer answer is a little more involved: Gatsby borrows a technique from [Relay](https://facebook.github.io/relay/) that converts our source code into an [abstract syntax tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) during the build step. All `graphql`-tagged templates are found in [`file-parser.js`](https://github.com/gatsbyjs/gatsby/blob/v1.6.3/packages/gatsby/src/internal-plugins/query-runner/file-parser.js#L63) and [`query-compiler.js`](https://github.com/gatsbyjs/gatsby/blob/v1.6.3/packages/gatsby/src/internal-plugins/query-runner/query-compiler.js), which effectively removes them from the original source code. This means that the `graphql` tag isn’t executed the way that we might expect, which is why there’s no error, despite the fact that we’re technically using an undefined tag in our source.
 
 ## Introducing Graph_i_QL
 
-Graph_i_QL is the GraphQL integrated development environment (IDE). It's a powerful (and all-around awesome) tool
-you'll use often while building Gatsby websites.
+Graph_i_QL is the GraphQL integrated development environment (IDE). It's a powerful (and all-around awesome) tool you'll use often while building Gatsby websites.
 
-You can access it when your site's development server is running—normally at
-<http://localhost:8000/___graphql>.
+You can access it when your site's development server is running—normally at http://localhost:8000/___graphql.
 
 <video controls="controls" autoplay="true" loop="true">
   <source type="video/mp4" src="/graphiql-explore.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
 
-Here we poke around the built-in `Site` "type" and see what fields are available
-on it—including the `siteMetadata` object we queried earlier. Try opening
-Graph_i_QL and play with your data! 
+Here we poke around the built-in `Site` "type" and see what fields are available on it—including the `siteMetadata` object we queried earlier. Try opening Graph_i_QL and play with your data! 
 
 Press ```Ctrl + Space``` to bring up the autocomplete window and ```Ctrl + Enter``` to run the query. We'll be using Graph_i_QL a lot more through the remainder of the tutorial.
 
 ## Source plugins
 
-Data in Gatsby sites can come literally from anywhere: APIs, databases, CMSs,
-local files, etc.
+Data in Gatsby sites can come literally from anywhere: APIs, databases, CMSs, local files, etc.
 
-Source plugins fetch data from their source. E.g. the filesystem source plugin
-knows how to fetch data from the file system. The WordPress plugin knows how to
-fetch data from the WordPress API.
+Source plugins fetch data from their source. E.g. the filesystem source plugin knows how to fetch data from the file system. The WordPress plugin knows how to fetch data from the WordPress API.
 
-Let's add [`gatsby-source-filesystem`](/packages/gatsby-source-filesystem/) and
-explore how it works.
+Let's add [`gatsby-source-filesystem`](/packages/gatsby-source-filesystem/) and explore how it works.
 
 First install the plugin at the root of the project:
 
@@ -384,7 +316,7 @@ npm install --save gatsby-source-filesystem
 
 Then add it to your `gatsby-config.js`:
 
-```javascript{6-12}
+```jsx
 module.exports = {
   siteMetadata: {
     title: `Pandas Eating Lots`,
@@ -415,36 +347,29 @@ If you bring up the autocomplete window you'll see:
 
 ![graphiql-filesystem](graphiql-filesystem.png)
 
-Hit `Enter` on `allFile` then type `Ctrl + Enter` to run a
-query.
+Hit `Enter` on `allFile` then type `Ctrl + Enter` to run a query.
 
 ![filesystem-query](filesystem-query.png)
 
-Delete the `id` from the query and bring up the autocomplete again (<kbd>Ctrl +
-Space</kbd>).
+Delete the `id` from the query and bring up the autocomplete again (<kbd>Ctrl + Space</kbd>).
 
 ![filesystem-autocomplete](filesystem-autocomplete.png)
 
-Try adding a number of fields to your query, pressing <kbd>Ctrl + Enter</kbd>
-each time to re-run the query. You'll see something like this:
+Try adding a number of fields to your query, pressing <kbd>Ctrl + Enter</kbd> each time to re-run the query. You'll see something like this:
 
 ![allfile-query](allfile-query.png)
 
-The result is an array of File "nodes" (node is a fancy name for an object in a
-"graph"). Each File object has the fields we queried for.
+The result is an array of File "nodes" (node is a fancy name for an object in a "graph"). Each File object has the fields we queried for.
 
 ## Build a page with a GraphQL query
 
-Building new pages with Gatsby often starts in Graph_i_QL. You first sketch out
-the data query by playing in Graph_i_QL then copy this to a React page component
-to start building the UI.
+Building new pages with Gatsby often starts in Graph_i_QL. You first sketch out the data query by playing in Graph_i_QL then copy this to a React page component to start building the UI.
 
 Let's try this.
 
-Create a new file at `src/pages/my-files.js` with the `allFile` query we just
-created:
+Create a new file at `src/pages/my-files.js` with the `allFile` query we just created:
 
-```jsx{4}
+```jsx
 import React from "react"
 
 export default ({ data }) => {
@@ -468,12 +393,9 @@ export const query = graphql`
 `
 ```
 
-The `console.log(data)` line is highlighted above. It's often helpful when
-creating a new component to console out the data you're getting from the query
-so you can explore the data in your browser console while building the UI.
+The `console.log(data)` line is highlighted above. It's often helpful when creating a new component to console out the data you're getting from the query so you can explore the data in your browser console while building the UI.
 
-If you visit the new page at `/my-files/` and open up your browser console you
-will see:
+If you visit the new page at `/my-files/` and open up your browser console you will see:
 
 ![data-in-console](data-in-console.png)
 
@@ -481,7 +403,7 @@ The shape of the data matches the shape of the query.
 
 Let's add some code to our component to print out the File data.
 
-```jsx{5-37}
+```jsx
 import React from "react"
 
 export default ({ data }) => {
@@ -543,20 +465,13 @@ And… 😲
 
 ## Transformer plugins
 
-Often, the format of the data we get from source plugins isn't what you want to
-use to build your website. The filesystem source plugin lets you query data
-_about_ files but what if you want to query data _inside_ files?
+Often, the format of the data we get from source plugins isn't what you want to use to build your website. The filesystem source plugin lets you query data about files but what if you want to query data _inside_ files?
 
-To make this possible, Gatsby supports transformer plugins which take raw
-content from source plugins and _transform_ it into something more usable.
+To make this possible, Gatsby supports **transformer plugins which take raw content from source plugins and _transform_ it into something more usable.**
 
-For example, Markdown files. Markdown is nice to write in but when you build a
-page with it, you need the Markdown to be HTML.
+For example, Markdown files. Markdown is nice to write in but when you build a page with it, you need the Markdown to be HTML.
 
-Let's add a Markdown file to our site at
-`src/pages/sweet-pandas-eating-sweets.md` (This will become our first Markdown
-blog post) and learn how to _transform_ it to HTML using transformer plugins and
-GraphQL.
+Let's add a Markdown file to our site at `src/pages/sweet-pandas-eating-sweets.md` (This will become our first Markdown blog post) and learn how to _transform_ it to HTML using transformer plugins and GraphQL.
 
 ```markdown
 ---
@@ -571,11 +486,7 @@ Here's a video of a panda eating sweets.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4n0xNbfJLR8" frameborder="0" allowfullscreen></iframe>
 ```
 
-Once you save the file, look at `/my-files/` again—the new Markdown file is in
-the table. This is a very powerful feature of Gatsby. Like the earlier
-`siteMetadata` example, source plugins can live reload data.
-`gatsby-source-filesystem` is always scanning for new files to be added and when
-they are, re-runs your queries.
+Once you save the file, look at `/my-files/` again—the new Markdown file is in the table. This is a very powerful feature of Gatsby. Like the earlier `siteMetadata` example, source plugins can live reload data. `gatsby-source-filesystem` is always scanning for new files to be added and when they are, re-runs your queries.
 
 Let's add a transformer plugin that can transform Markdown files:
 
@@ -585,7 +496,7 @@ npm install --save gatsby-transformer-remark
 
 Then add it to the `gatsby-config.js` like normal:
 
-```javascript{13}
+```javascript
 module.exports = {
   siteMetadata: {
     title: `Pandas Eating Lots`,
@@ -621,20 +532,13 @@ available on the `MarkdownRemark` node.
 
 ![markdown-query](markdown-query.png)
 
-Ok! Hopefully some basics are starting to fall into place. Source plugins bring
-data _into_ Gatsby's data system and _transformer_ plugins transform raw content
-brought by source plugins. This pattern can handle all data sourcing and
-data transformation you might need when building a Gatsby site.
+Ok! Hopefully some basics are starting to fall into place. Source plugins bring data _into_ Gatsby's data system and _transformer_ plugins transform raw content brought by source plugins. This pattern can handle all data sourcing and data transformation you might need when building a Gatsby site.
 
 ## Create a list of our site's Markdown files in `src/pages/index.js`
 
-Let's now create a list of our Markdown files on the front page. Like many
-blogs, we want to end up with a list of links on the front page pointing to each
-blog post. With GraphQL we can _query_ for the current list of Markdown blog
-posts so we won't need to maintain the list manually.
+Let's now create a list of our Markdown files on the front page. Like many blogs, we want to end up with a list of links on the front page pointing to each blog post. With GraphQL we can _query_ for the current list of Markdown blog posts so we won't need to maintain the list manually.
 
-Like with the `src/pages/my-files.js` page, replace `src/pages/index.js` with
-the following to add a query with some initial HTML and styling.
+Like with the `src/pages/my-files.js` page, replace `src/pages/index.js` with the following to add a query with some initial HTML and styling.
 
 ```jsx
 import React from "react";
@@ -705,11 +609,7 @@ seem to really enjoy bananas!
 
 Which looks great! Except… the order of the posts is wrong.
 
-But this is easy to fix. When querying a connection of some type, you can pass a
-variety of arguments to the query. You can `sort` and `filter` nodes, set how
-many nodes to `skip`, and choose the `limit` of how many nodes to retrieve. With
-this powerful set of operators, we can select any data we want—in the format we
-need.
+But this is easy to fix. When querying a connection of some type, you can pass a variety of arguments to the query. You can `sort` and `filter` nodes, set how many nodes to `skip`, and choose the `limit` of how many nodes to retrieve (). With this powerful set of operators, we can select any data we want—in the format we need.
 
 In our index page's query, change `allMarkdownRemark` to
 `allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC})`. Save
@@ -763,7 +663,7 @@ nodes.
 
 Change our function so it now is only looking at `MarkdownRemark` nodes.
 
-```javascript{2-4}
+```javascript
 exports.onCreateNode = ({ node }) => {
   if (node.internal.type === `MarkdownRemark`) {
     console.log(node.internal.type)
@@ -777,7 +677,7 @@ the file name from the `MarkdownRemark` node? To get it, we need to _traverse_
 the "node graph" to its _parent_ `File` node, as `File` nodes contain data we
 need about files on disk. To do that, modify our function again:
 
-```javascript{1,3-4}
+```javascript
 exports.onCreateNode = ({ node, getNode }) => {
   if (node.internal.type === `MarkdownRemark`) {
     const fileNode = getNode(node.parent)
@@ -795,7 +695,7 @@ Now let's create slugs. As the logic for creating slugs from file names can get
 tricky, the `gatsby-source-filesystem` plugin ships with a function for creating
 slugs. Let's use that.
 
-```javascript{1,5}
+```javascript
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({ node, getNode }) => {
@@ -820,7 +720,7 @@ the original creator of a node can directly modify the node—all other plugins
 (including our `gatsby-node.js`) must use this function to create additional
 fields.
 
-```javascript{3,4,6-11}
+```javascript
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
@@ -858,7 +758,7 @@ Now that the slugs are created, we can create the pages.
 In the same `gatsby-node.js` file, add the following. Here we tell Gatsby about
 our pages—what are their paths, what template component do they use, etc.
 
-```javascript{15-34}
+```javascript
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
@@ -920,7 +820,7 @@ export default () => {
 
 Then update `gatsby-node.js`
 
-```javascript{1,17,32-41}
+```javascript
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
@@ -1018,7 +918,7 @@ The last step is to link to our new pages from the index page.
 Return to `src/pages/index.js` and let's query for our Markdown slugs and create
 links.
 
-```jsx{3,18-19,29,46-48}
+```jsx
 import React from "react"
 import g from "glamorous"
 import Link from "gatsby-link"

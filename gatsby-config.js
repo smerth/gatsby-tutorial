@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Pandas Eating Lots`
+    title: `Smerth's Amazing Panda Blog`
   },
   plugins: [
     {
@@ -10,6 +10,20 @@ module.exports = {
         path: `${__dirname}/src/`
       }
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data/yaml`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-copy-files',
+      options: {
+          source: `${__dirname}/src/pages/pdfs`,
+          destination: '/assets/pdf'
+      }
+    },
     `gatsby-transformer-remark`,
     `gatsby-plugin-glamor`,
     {
@@ -17,6 +31,10 @@ module.exports = {
       options: {
         pathToConfigModule: `src/utils/typography`
       }
+    },
+    `gatsby-transformer-yaml`,
+    module.exports = {
+      pathPrefix: `/gatsby-tutorial`,
     }
   ]
 };

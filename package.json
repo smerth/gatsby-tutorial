@@ -5,16 +5,26 @@
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "gatsby": "^1.9.153",
     "gatsby-link": "^1.6.34",
+    "gatsby-plugin-copy-files": "^1.0.1",
     "gatsby-plugin-glamor": "^1.6.10",
     "gatsby-plugin-typography": "^1.7.10",
     "gatsby-source-filesystem": "^1.5.11",
     "gatsby-transformer-remark": "^1.7.28",
+    "gatsby-transformer-yaml": "^1.5.14",
     "glamorous": "^4.11.3",
+    "lodash": "^4.17.4",
+    "pdf.js-extract": "^0.0.6",
+    "pdfjs-dist": "^2.0.303",
     "typography-theme-kirkham": "^0.16.3"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
   }
 }

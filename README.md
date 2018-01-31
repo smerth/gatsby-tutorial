@@ -1,15 +1,35 @@
 # Blog site built with gatsby.js
 
-This site was built following the tutorial [Gatsby](https://www.gatsbyjs.org/) site.
+This site was built following the tutorial from the [Gatsby](https://www.gatsbyjs.org/) site.
 
-# gatsby-starter-hello-world
+In the tutorial you build three sites.  This site was built from part four of the tutorial but then I went on to incorporate elements from parts 1-3.  I addition I added a PDF library after reading [This](http://blog.blakesimpson.co.uk/view/96-building-a-pdf-library-with-gatsby-js) blog post from Blake Simpson (which is very good!)
 
-Starter with the bare essentials needed for a [Gatsby](https://www.gatsbyjs.org/) site
+The site is based on: `gatsby-starter-hello-world`
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
+## Setup
+
+Clone this repo
+
+Install dependancies
+
+```bash
+yarn install
 ```
-gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world
-```
 
-## Running in development
+
+
+## Develop
+
 `gatsby develop`
+
+
+
+## Deploy
+
+See the docs folder
+
+
+
+## Read more
+
+See the docs folder

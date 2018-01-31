@@ -10,6 +10,34 @@
 - Plugins are easy to open source and reuse. They’re just NPM packages.
 
 
+## Themes
+
+- Typography.js has more than 30 themes! [Try them live](http://kyleamathews.github.io/typography.js) or check out [the complete list](https://github.com/KyleAMathews/typography.js#published-typographyjs-themes)
+- ​
+
+
+
+## CSS
+
+There are mini-tutorials for two libraries, [Glamor](/docs/glamor/) and [Styled Components](/docs/styled-components/). Check out the following resources for background reading on CSS-in-JS:
+
+[Christopher "vjeux" Chedeau's 2014 presentation that sparked this movement](https://speakerdeck.com/vjeux/react-css-in-js) as well as
+[Mark Dalgleish's more recent post "A Unified Styling Language"](https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660).
+
+CSS Modules:  [the CSS Module homepage](https://github.com/css-modules/css-modules):
+
+Gatsby supports almost every possible styling option (if there isn't a plugin yet for your favorite CSS option, [please contribute one!](/docs/how-to-contribute/))
+
+- [Sass](/packages/gatsby-plugin-sass/)
+- [Emotion](/packages/gatsby-plugin-emotion/)
+- [JSS](/packages/gatsby-plugin-jss/)
+- [Stylus](/packages/gatsby-plugin-stylus/)
+- and more!
+
+
+
+
+
 
 ## Recommended Gatsby tutorials
 
