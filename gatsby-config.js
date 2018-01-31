@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: 'gatsby-tutorial',
   siteMetadata: {
     title: `Smerth's Amazing Panda Blog`
   },
@@ -32,9 +33,6 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`
       }
     },
-    `gatsby-transformer-yaml`,
-    module.exports = {
-      pathPrefix: `/gatsby-tutorial`,
-    }
+    `gatsby-transformer-yaml`, 
   ]
 };
