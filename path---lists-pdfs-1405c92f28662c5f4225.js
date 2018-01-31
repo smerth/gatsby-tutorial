@@ -1,0 +1,2 @@
+webpackJsonp([51854251877775],{538:function(a,e){a.exports={data:{allBook:{totalCount:1,edges:[{node:{id:"/Users/smerth/Sites/Javascript/REACT/GatsbyJS/gatsby-js-simple-blog/src/pages/pdfs/The Public Domain.pdf absPath of file [ab3325fe653211ad1ffeeb9ca92a3c3a] >>> pdf",title:"James Boyle, The Public Domain: Enclosing the Commons of the Mind",author:"James Boyle",pageCount:"333",path:"/pdfs/The-Public-Domain/"}}]}},pathContext:{}}}});
+//# sourceMappingURL=path---lists-pdfs-1405c92f28662c5f4225.js.map

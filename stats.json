@@ -1,0 +1,92 @@
+{
+  "assetsByChunkName": {
+    "component---src-pages-demo-site-files-js": [
+      "component---src-pages-demo-site-files-js-b0a36c1c44972c0b05f8.js",
+      "component---src-pages-demo-site-files-js-b0a36c1c44972c0b05f8.js.map"
+    ],
+    "component---src-pages-index-js": [
+      "component---src-pages-index-js-7ff23b1e0817af94705b.js",
+      "component---src-pages-index-js-7ff23b1e0817af94705b.js.map"
+    ],
+    "path---lists-pdfs": [
+      "path---lists-pdfs-1405c92f28662c5f4225.js",
+      "path---lists-pdfs-1405c92f28662c5f4225.js.map"
+    ],
+    "component---src-pages-lists-pdfs-js": [
+      "component---src-pages-lists-pdfs-js-25535c32fe5a057b7d08.js",
+      "component---src-pages-lists-pdfs-js-25535c32fe5a057b7d08.js.map"
+    ],
+    "path---": [
+      "path----18c01ec64b3d02dd3a6a.js",
+      "path----18c01ec64b3d02dd3a6a.js.map"
+    ],
+    "component---src-pages-about-contact-js": [
+      "component---src-pages-about-contact-js-78f7b4d29678c592c14b.js",
+      "component---src-pages-about-contact-js-78f7b4d29678c592c14b.js.map"
+    ],
+    "component---src-pages-demo-counter-js": [
+      "component---src-pages-demo-counter-js-31f664df4bad45ee5bcb.js",
+      "component---src-pages-demo-counter-js-31f664df4bad45ee5bcb.js.map"
+    ],
+    "component---src-templates-view-book-js": [
+      "component---src-templates-view-book-js-50eed721f6fd288c82c6.js",
+      "component---src-templates-view-book-js-50eed721f6fd288c82c6.js.map"
+    ],
+    "component---src-templates-blog-post-js": [
+      "component---src-templates-blog-post-js-b84dc952d929669935d8.js",
+      "component---src-templates-blog-post-js-b84dc952d929669935d8.js.map"
+    ],
+    "component---src-layouts-index-js": [
+      "component---src-layouts-index-js-30f626edf92411f791d2.js",
+      "component---src-layouts-index-js-30f626edf92411f791d2.js.map"
+    ],
+    "component---src-pages-about-about-js": [
+      "component---src-pages-about-about-js-0dc92b04e4c07c951f78.js",
+      "component---src-pages-about-about-js-0dc92b04e4c07c951f78.js.map"
+    ],
+    "path---index": [
+      "path---index-8f336bd062e890b45421.js",
+      "path---index-8f336bd062e890b45421.js.map"
+    ],
+    "commons": [
+      "commons-3da5920f251836f6bbb1.js",
+      "build-js-styles.css",
+      "commons-3da5920f251836f6bbb1.js.map",
+      "build-js-styles.css.map"
+    ],
+    "path---pandas-and-bananas": [
+      "path---pandas-and-bananas-9db487bff67512bc7afd.js",
+      "path---pandas-and-bananas-9db487bff67512bc7afd.js.map"
+    ],
+    "path---sweet-pandas-eating-sweets": [
+      "path---sweet-pandas-eating-sweets-765a0771e51424303639.js",
+      "path---sweet-pandas-eating-sweets-765a0771e51424303639.js.map"
+    ],
+    "path---demo-site-files": [
+      "path---demo-site-files-81f5f9cfe22191fd543e.js",
+      "path---demo-site-files-81f5f9cfe22191fd543e.js.map"
+    ],
+    "path---demo-counter": [
+      "path---demo-counter-a0e39f21c11f6a62c5ab.js",
+      "path---demo-counter-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "path---about-contact": [
+      "path---about-contact-a0e39f21c11f6a62c5ab.js",
+      "path---about-contact-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "app": [
+      "app-40aca3308946e4f2732f.js",
+      "build-js-styles.css",
+      "app-40aca3308946e4f2732f.js.map",
+      "build-js-styles.css.map"
+    ],
+    "path---pdfs-the-public-domain": [
+      "path---pdfs-the-public-domain-4548f29784d8f2b4435e.js",
+      "path---pdfs-the-public-domain-4548f29784d8f2b4435e.js.map"
+    ],
+    "path---about-about": [
+      "path---about-about-b05708fd48d2363a0399.js",
+      "path---about-about-b05708fd48d2363a0399.js.map"
+    ]
+  }
+}
