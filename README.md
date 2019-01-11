@@ -6,7 +6,7 @@ In the tutorial you build three sites. This site was built from part four of the
 
 The site is based on: `gatsby-starter-hello-world`
 
-![App Screenshot](https://raw.githubusercontent.com/smerthgatsby-tutorial/master/screenshot.png)
+![App Screenshot](https://raw.githubusercontent.com/smerth/gatsby-tutorial/master/screenshot.png)
 
 ## Setup
 
